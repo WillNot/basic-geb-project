@@ -43,14 +43,6 @@ environments {
 		driver = { new FirefoxDriver() }
 	}
 
-	seleniumGrid {
-
-		adriver =  new RemoteWebDriver(new URL("http://seleniumgrid.mutualofomaha.com:4444/wd/hub"), DesiredCapabilities.chrome())
-		adriver.manage().window().maximize()
-		driver = { adriver }
-
-	}
-
 }
 
 // To run the tests with all browsers just run “./gradlew test”
