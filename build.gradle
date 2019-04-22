@@ -7,7 +7,7 @@ plugins {
 
 ext {
     // The drivers we want to use
-    drivers = ["chromeHeadless"]
+    drivers = ["remote"]
 
     ext {
         groovyVersion = '2.5.6'
@@ -62,6 +62,7 @@ test {
 tasks.withType(Test) {
     maxHeapSize = "1g"
     jvmArgs '-XX:MaxMetaspaceSize=128m'
+    jvmArgs project.gradle.startParameter.systemPropertiesArgs.entrySet().collect { "-D${it.key}=${it.value}" }
     testLogging {
         exceptionFormat = 'full'
     }

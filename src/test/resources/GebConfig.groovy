@@ -1,10 +1,11 @@
 /*
 	This is the Geb configuration file.
-	
+
 	See: http://www.gebish.org/manual/current/#configuration
 */
 
 
+import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.firefox.FirefoxDriver
@@ -18,7 +19,7 @@ waiting {
 }
 
 environments {
-	
+
 	// run via “./gradlew chromeTest”
 	// See: http://code.google.com/p/selenium/wiki/ChromeDriver
 	chrome {
@@ -34,13 +35,22 @@ environments {
 			new ChromeDriver(o)
 		}
 	}
-	
+
 	// run via “./gradlew firefoxTest”
 	// See: http://code.google.com/p/selenium/wiki/FirefoxDriver
 	firefox {
 		atCheckWaiting = 1
 
 		driver = { new FirefoxDriver() }
+	}
+
+	// run via seleniumgrid
+	remote {
+		driver = {
+			WebDriver adriver =  new RemoteWebDriver(new URL("http://seleniumgrid.mutualofomaha.com:4444/wd/hub"), DesiredCapabilities.chrome())
+			adriver.manage().window().maximize()
+			driver = { adriver }
+		}
 	}
 
 }
