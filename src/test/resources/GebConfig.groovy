@@ -49,7 +49,7 @@ environments {
 		driver = {
 			WebDriver adriver =  new RemoteWebDriver(new URL("http://seleniumgrid.mutualofomaha.com:4444/wd/hub"), DesiredCapabilities.chrome())
 			adriver.manage().window().maximize()
-			driver = { adriver }
+			driver = adriver
 		}
 	}
 
