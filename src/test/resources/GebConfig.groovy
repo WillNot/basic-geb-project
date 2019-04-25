@@ -47,7 +47,7 @@ environments {
 	// run via seleniumgrid
 	remote {
 		driver = {
-			WebDriver adriver =  new RemoteWebDriver(new URL("http://mootestjenkins.centralus.cloudapp.azure.com:4444/wd/hub"), DesiredCapabilities.chrome())
+			WebDriver adriver =  new RemoteWebDriver(new URL("http://seleniumgrid.mutualofomaha.com:4444/grid/console"), DesiredCapabilities.chrome())
 			adriver.manage().window().maximize()
 			driver = adriver
 		}
