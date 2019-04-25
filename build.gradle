@@ -5,6 +5,8 @@ plugins {
     id "com.energizedwork.idea-base" version "1.4"
 }
 
+apply plugin: "com.mutualofomaha.jenkins-conventions"
+
 ext {
     // The drivers we want to use
     drivers = ["remote"]
