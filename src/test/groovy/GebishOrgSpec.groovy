@@ -10,7 +10,7 @@ class GebishOrgSpec extends GebSpec {
         manualsMenu.open()
 
         then:
-        manualsMenu.links[0].text().startsWith("old")
+        manualsMenu.links[0].text().contains("3.0")
 
         when:
         manualsMenu.links[0].click()

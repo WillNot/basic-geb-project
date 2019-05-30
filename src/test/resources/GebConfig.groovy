@@ -46,11 +46,14 @@ environments {
 
 	// run via seleniumgrid
 	remote {
-		driver = {
-			WebDriver adriver =  new RemoteWebDriver(new URL("http://seleniumgrid.mutualofomaha.com:4444/grid/console"), DesiredCapabilities.chrome())
-			adriver.manage().window().maximize()
-			driver = adriver
-		}
+		DesiredCapabilities cap = DesiredCapabilities.chrome()
+//		cap.setPlatform(Platform.WIN10)
+		adriver =  new RemoteWebDriver(new URL("http://seleniumgrid.mutualofomaha.com:4444/wd/hub"), cap)
+		//		adriver =  new RemoteWebDriver(new URL("http://10.10.231.236:5555/wd/hub"), DesiredCapabilities.chrome())
+//		adriver =  new RemoteWebDriver(new URL("http://devopsseleniumgridprod.mutualofomaha.com:4444/wd/hub"), DesiredCapabilities.chrome())
+		adriver.manage().window().maximize()
+		driver = { adriver }
+
 	}
 
 }
