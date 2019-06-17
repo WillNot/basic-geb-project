@@ -5,9 +5,10 @@ plugins {
     id "com.energizedwork.idea-base" version "1.4"
 }
 
+
 ext {
     // The drivers we want to use
-    drivers = ["remote"]
+    drivers = ["chrome"]
 
     ext {
         groovyVersion = '2.5.6'
@@ -20,9 +21,20 @@ ext {
 
 repositories {
     mavenCentral()
+    jcenter { url "https://dl.bintray.com/epam/reportportal" }
 }
 
 dependencies {
+
+    //Report Portal libraries
+    compile ('com.epam.reportportal:agent-java-spock:2.6.0') {
+        exclude group: 'com.epam.reportportal:client-java-core:2.5.1'
+    }
+    compile 'com.epam.reportportal:client-java-core:2.7.1'
+    compile 'com.epam.reportportal:logger-java-log4j:4.0.1'
+
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.2'
+
     // If using Spock, need to depend on geb-spock
     testCompile "org.gebish:geb-spock:$gebVersion"
     testCompile("org.spockframework:spock-core:1.1-groovy-2.4") {

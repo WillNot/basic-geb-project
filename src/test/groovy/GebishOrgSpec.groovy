@@ -1,21 +1,26 @@
-import geb.spock.GebSpec
+import geb.spock.GebReportingSpec
+import groovy.util.logging.Slf4j
 
-class GebishOrgSpec extends GebSpec {
+@Slf4j
+class GebishOrgSpec extends GebReportingSpec {
 
     def "can get to the current Book of Geb"() {
-        when:
+        when: "when"
         to GebishOrgHomePage
 
-        and:
+        and:"and"
         manualsMenu.open()
+        report "screenshot 1"
 
-        then:
+
+        then:"then"
         manualsMenu.links[0].text().contains("3.0")
 
-        when:
+        when:"when"
         manualsMenu.links[0].click()
 
-        then:
+        then:"then"
         at TheBookOfGebPage
+        report "screenshot 2"
     }
 }

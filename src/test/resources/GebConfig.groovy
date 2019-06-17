@@ -5,7 +5,8 @@
 */
 
 
-import org.openqa.selenium.WebDriver
+//import geb.RpScreenShotListener
+import geb.report.ScreenshotReporter
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.firefox.FirefoxDriver
@@ -59,5 +60,11 @@ environments {
 }
 
 // To run the tests with all browsers just run “./gradlew test”
-
 baseUrl = "http://gebish.org"
+
+/**
+ * Following lines set the screenshot directory and define the listener as the Report Portal compatible screenshot listener
+ */
+reportsDir = new File("build/test-results/GebishOrgSpec")
+reporter = new ScreenshotReporter()
+//reportingListener = new RpScreenShotListener()

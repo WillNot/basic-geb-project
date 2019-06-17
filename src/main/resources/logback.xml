@@ -1,0 +1,36 @@
+<configuration>
+    <appender name="ReportPortalAppender" class="com.epam.reportportal.logback.appender.ReportPortalAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%t] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>./logs/exampletests.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%-5relative %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-5relative %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.epam" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="rp">
+        <level value="WARN"/>
+    </logger>
+    <logger name="com.epam.reportportal">
+        <level value="WARN"/>
+    </logger>
+
+    <root level="TRACE">
+        <appender-ref ref="ReportPortalAppender" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
